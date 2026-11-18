@@ -413,6 +413,8 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
 .m-leaf { border-radius: 28px 90px 28px 90px; }
 .m-window { border-radius: 150px 150px 26px 26px; margin-top: 28px; }
 .m-fold { border-radius: 8px 64px 22px 28px; }
+.m-soft { border-radius: 36px 80px 28px 64px; }
+.m-frame { border-radius: 22px; margin-top: 32px; }
 .m-fold::after {
   content: "";
   position: absolute;
@@ -979,7 +981,7 @@ body.dash {
     grid-template-columns: 1fr;
   }
   .modules, .steps, .kpis { grid-template-columns: 1fr 1fr; }
-  .m-arch, .m-window { margin-top: 0; }
+  .m-arch, .m-window, .m-frame { margin-top: 0; }
   .stage { height: 460px; }
   .tablet { right: 0; transform: none; }
   .side { position: relative; height: auto; }
