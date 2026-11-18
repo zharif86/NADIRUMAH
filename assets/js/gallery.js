@@ -32,9 +32,13 @@
     note.textContent = message || "";
   }
 
+  const houses = window.NR_HOUSES || [];
+  const house = houses.find((item) => item.id === sessionStorage.getItem("nr_house")) || houses[0];
+  const houseId = house ? house.id : "aminah";
+
   function db() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open("nadirumah", 1);
+      const request = indexedDB.open("nadirumah-" + houseId, 1);
       request.onupgradeneeded = () => {
         request.result.createObjectStore("gallery", { keyPath: "id" });
       };
@@ -179,6 +183,9 @@
     idleTimer = window.setTimeout(openFrame, idleMs);
   }
 
+  const galleryForm = document.querySelector("#gallery-form");
+  if (galleryForm) galleryForm.addEventListener("submit", (event) => event.preventDefault());
+
   if (pick && input) {
     pick.addEventListener("click", () => input.click());
     input.addEventListener("change", () => {
@@ -209,6 +216,37 @@
     });
   });
 
-  load().then(bump).catch(() => say("Galeri tidak dapat dibuka pada pelayar ini."));
+  function seedAlbums() {
+    const albums = house && house.albums ? house.albums : [];
+    const flag = "nr_gallery_seeded_" + houseId;
+    if (!albums.length || localStorage.getItem(flag) === "1") return Promise.resolve();
+    const jobs = albums.map((title) => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1280;
+      canvas.height = 800;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#f7f3ec";
+      ctx.fillRect(0, 0, 1280, 800);
+      ctx.fillStyle = "#3e5a42";
+      ctx.fillRect(90, 90, 1100, 620);
+      ctx.fillStyle = "#f7f3ec";
+      ctx.font = "48px Georgia, serif";
+      ctx.fillText(title, 150, 400);
+      ctx.font = "24px Georgia, serif";
+      ctx.fillText(house.label, 150, 460);
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => resolve(blob), "image/jpeg", 0.86);
+      }).then((blob) => (blob ? save(blob) : null));
+    });
+    return Promise.all(jobs).then(() => {
+      localStorage.setItem(flag, "1");
+    });
+  }
+
+  load()
+    .then(() => (items.length ? null : seedAlbums()))
+    .then(() => (items.length ? null : load()))
+    .then(bump)
+    .catch(() => say("Galeri tidak dapat dibuka pada pelayar ini."));
   window.setInterval(stamp, 30000);
 })();

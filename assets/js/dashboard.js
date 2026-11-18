@@ -1,12 +1,33 @@
 (function () {
   const role = sessionStorage.getItem("nr_role");
-  const name = sessionStorage.getItem("nr_name") || "Aminah";
+  const houses = window.NR_HOUSES || [];
+  if (!sessionStorage.getItem("nr_house") && houses[0]) {
+    sessionStorage.setItem("nr_house", houses[0].id);
+  }
+  const active = houses.find((item) => item.id === sessionStorage.getItem("nr_house")) || houses[0];
+  const name = (active && role !== "admin" ? active.name : sessionStorage.getItem("nr_name")) || "Aminah";
   document.querySelectorAll("[data-name]").forEach((el) => {
     el.textContent = name;
   });
-  if (role === "admin") {
+  if (active) {
     document.querySelectorAll("[data-house]").forEach((el) => {
-      el.textContent = "Pentadbir · NadiRumah";
+      el.textContent = role === "admin" ? "Pentadbir · " + active.label : active.label;
+    });
+  }
+  const houseSwitch = document.querySelector("#house-switch");
+  const housePick = document.querySelector("#house-pick");
+  if (role === "admin" && houseSwitch && housePick && houses.length) {
+    houseSwitch.hidden = false;
+    houses.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.id;
+      option.textContent = item.label;
+      if (active && item.id === active.id) option.selected = true;
+      housePick.append(option);
+    });
+    housePick.addEventListener("change", () => {
+      sessionStorage.setItem("nr_house", housePick.value);
+      window.location.reload();
     });
   }
 
@@ -15,6 +36,7 @@
       sessionStorage.removeItem("nr_role");
       sessionStorage.removeItem("nr_name");
       sessionStorage.removeItem("nr_email");
+      sessionStorage.removeItem("nr_house");
     });
   });
 

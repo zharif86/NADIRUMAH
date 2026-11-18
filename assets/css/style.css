@@ -669,7 +669,37 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
   border-top: 1px solid var(--line);
   color: var(--grey);
 }
-.rowline b { color: var(--ink); font-weight: 600; }
+.rowline span { flex: 1; }
+.rowline b { color: var(--ink); font-weight: 600; text-align: right; }
+.entry {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+  margin: 14px 0;
+  padding: 14px;
+  border: 1px dashed var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+}
+.entry-title { grid-column: 1 / -1; margin: 0; font-size: 1rem; }
+.entry label { display: grid; gap: 6px; color: var(--grey); font-size: 0.82rem; }
+.entry input, .entry select {
+  width: 100%;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.entry input:focus, .entry select:focus { outline: 2px solid var(--blue); border-color: transparent; }
+.entry .btn { margin-bottom: 1px; }
+.row-x {
+  border: 0;
+  background: transparent;
+  color: #8e4638;
+  font-size: 0.82rem;
+  padding: 4px 0 4px 8px;
+}
 .tag {
   font-size: 12px;
   color: var(--cream);
@@ -724,6 +754,14 @@ body.dash {
 .dash .card { position: relative; z-index: 1; }
 .dash-title { font-size: clamp(2rem, 3vw, 2.8rem); }
 .top-actions { display: flex; align-items: center; gap: 12px; }
+.house-switch { display: grid; gap: 2px; color: var(--grey); font-size: 0.75rem; }
+.house-switch select {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 10px;
+  color: var(--ink);
+}
 .live {
   display: inline-flex;
   align-items: center;
@@ -830,6 +868,7 @@ body.dash {
   transition: transform 0.2s ease;
 }
 .switch[aria-pressed="true"] i { transform: translateX(20px); }
+.device-actions { display: flex; align-items: center; gap: 8px; }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
@@ -1016,7 +1055,7 @@ body.dash {
   .hero-grid, .split, .ai-panel, .plans, .stories, .footer-grid, .grid-2, .app {
     grid-template-columns: 1fr;
   }
-  .modules, .steps, .kpis { grid-template-columns: 1fr 1fr; }
+  .modules, .steps, .kpis, .entry { grid-template-columns: 1fr; }
   .m-arch, .m-window, .m-frame { margin-top: 0; }
   .stage { height: 460px; }
   .tablet { right: 0; transform: none; }

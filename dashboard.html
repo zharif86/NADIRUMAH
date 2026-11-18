@@ -36,6 +36,9 @@
           <h2 class="dash-title">Selamat kembali, <span data-name>Aminah</span>.</h2>
         </div>
         <div class="top-actions">
+          <label class="house-switch" id="house-switch" hidden>Keluarga
+            <select id="house-pick" aria-label="Pilih keluarga"></select>
+          </label>
           <span class="live"><i class="pulse" aria-hidden="true"></i> Rumah bernafas</span>
           <a class="btn gold small" href="index.html" data-logout>Log keluar</a>
         </div>
@@ -43,17 +46,22 @@
 
       <section class="panel on" id="ikhtisar">
         <div class="kpis">
-          <div class="kpi"><b data-count="4">0</b><span>Ahli rumah aktif</span></div>
-          <div class="kpi"><b data-count="2">0</b><span>Bungkusan dalam perjalanan</span></div>
-          <div class="kpi"><b data-count="86" data-suffix="%">0%</b><span>Stok dapur minggu ini</span></div>
-          <div class="kpi"><b data-count="420" data-prefix="RM">RM0</b><span>Bil terbuka bulan ini</span></div>
+          <div class="kpi"><b data-live="people">0</b><span>Ahli rumah aktif</span></div>
+          <div class="kpi"><b data-live="parcels">0</b><span>Bungkusan dalam perjalanan</span></div>
+          <div class="kpi"><b data-live="stock">0%</b><span>Stok dapur minggu ini</span></div>
+          <div class="kpi"><b data-live="bills">RM0</b><span>Bil terbuka bulan ini</span></div>
         </div>
+        <form class="entry" data-book="ahli">
+          <p class="entry-title">Tambah ahli rumah</p>
+          <label>Nama<input name="title" required placeholder="Contoh: Aisyah"></label>
+          <label>Peranan<input name="detail" required placeholder="Anak"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="ahli"></article>
         <div class="grid-2">
           <article class="card">
             <h3>Yang perlukan anda hari ini</h3>
-            <div class="rowline"><span>Sahkan tugasan lipat baju · Aisyah</span><b>+20</b></div>
-            <div class="rowline"><span>Bungkusan Shopee sampai petang</span><b>16:40</b></div>
-            <div class="rowline"><span>Susu di paras rendah</span><b>Dapur</b></div>
+            <div id="today-list"></div>
           </article>
           <article class="card card-ai">
             <h3>Nadi AI</h3>
@@ -68,11 +76,13 @@
           <img src="assets/img/modul-logistik.jpg" alt="">
           <div><p class="eyebrow">Logistik</p><h3>Penerimaan bungkusan</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Shopee · lampin &amp; sabun</span><b>Hari ini</b></div>
-          <div class="rowline"><span>Pos Laju · buku latihan Adam</span><b>Esok</b></div>
-          <div class="rowline"><span>Siapa ambil di pagar</span><b>Belum ditetapkan</b></div>
-        </article>
+        <form class="entry" data-book="logistik">
+          <p class="entry-title">Tambah bungkusan</p>
+          <label>Bungkusan<input name="title" required placeholder="Shopee · sabun"></label>
+          <label>Bila atau siapa ambil<input name="detail" required placeholder="Hari ini · Aminah"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="logistik"></article>
       </section>
 
       <section class="panel" id="selenggara">
@@ -80,11 +90,19 @@
           <img src="assets/img/modul-penyelenggaraan.jpg" alt="">
           <div><p class="eyebrow">Penyelenggaraan</p><h3>Meja bantuan rumah</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Penghawa dingin bilik tidur berbunyi</span><span class="tag">Terbuka</span></div>
-          <div class="rowline"><span>Lampu koridor kelip</span><b>Dijadualkan Sabtu</b></div>
-          <div class="rowline"><span>Paip singki dapur</span><b>Selesai</b></div>
-        </article>
+        <form class="entry" data-book="selenggara">
+          <p class="entry-title">Tambah kerja rumah</p>
+          <label>Kerja<input name="title" required placeholder="Lampu koridor kelip"></label>
+          <label>Status
+            <select name="detail" required>
+              <option>Terbuka</option>
+              <option>Dijadualkan</option>
+              <option>Selesai</option>
+            </select>
+          </label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="selenggara"></article>
       </section>
 
       <section class="panel" id="tugasan">
@@ -92,11 +110,13 @@
           <img src="assets/img/modul-tugasan.jpg" alt="">
           <div><p class="eyebrow">Tugasan</p><h3>Enjin tugasan</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Aisyah · lipat baju</span><b>20 mata · menunggu</b></div>
-          <div class="rowline"><span>Adam · siram tanaman</span><b>15 mata · selesai</b></div>
-          <div class="rowline"><span>Papan mata minggu ini</span><b>Aisyah 240 · Adam 180</b></div>
-        </article>
+        <form class="entry" data-book="tugasan">
+          <p class="entry-title">Tambah tugasan</p>
+          <label>Siapa dan tugasan<input name="title" required placeholder="Aisyah · lipat baju"></label>
+          <label>Mata dan status<input name="detail" required placeholder="20 mata · menunggu"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="tugasan"></article>
       </section>
 
       <section class="panel" id="dapur">
@@ -104,11 +124,13 @@
           <img src="assets/img/modul-dapur.jpg" alt="">
           <div><p class="eyebrow">Dapur</p><h3>Arkib dapur</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Beras</span><b>2 hari</b></div>
-          <div class="rowline"><span>Susu segar</span><b>Hampir habis</b></div>
-          <div class="rowline"><span>Telur</span><b>Cukup</b></div>
-        </article>
+        <form class="entry" data-book="dapur">
+          <p class="entry-title">Tambah stok dapur</p>
+          <label>Bahan<input name="title" required placeholder="Beras"></label>
+          <label>Paras<input name="detail" required placeholder="Hampir habis"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="dapur"></article>
       </section>
 
       <section class="panel" id="kesihatan">
@@ -116,11 +138,13 @@
           <img src="assets/img/modul-kesihatan.jpg" alt="">
           <div><p class="eyebrow">Kesihatan</p><h3>Kesihatan &amp; sekolah</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Alahan Adam</span><b>Udang · epipen di laci dapur</b></div>
-          <div class="rowline"><span>Klinik keluarga</span><b>Klinik Kelana, 03-0000 2211</b></div>
-          <div class="rowline"><span>Latihan Aisyah</span><b>Khamis 17:30</b></div>
-        </article>
+        <form class="entry" data-book="kesihatan">
+          <p class="entry-title">Tambah rekod kesihatan atau sekolah</p>
+          <label>Rekod<input name="title" required placeholder="Alahan Adam"></label>
+          <label>Butiran<input name="detail" required placeholder="Udang · epipen di laci dapur"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="kesihatan"></article>
       </section>
 
       <section class="panel" id="kewangan">
@@ -128,11 +152,13 @@
           <img src="assets/img/modul-kewangan.jpg" alt="">
           <div><p class="eyebrow">Kewangan</p><h3>Kewangan rumah</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>TNB</span><b>RM186 · 12 haribulan</b></div>
-          <div class="rowline"><span>Air</span><b>RM42 · 18 haribulan</b></div>
-          <div class="rowline"><span>Cukai tanah</span><b>Mac · belum dijana</b></div>
-        </article>
+        <form class="entry" data-book="kewangan">
+          <p class="entry-title">Tambah bil rumah</p>
+          <label>Bil<input name="title" required placeholder="TNB"></label>
+          <label>Jumlah dan tarikh<input name="detail" required placeholder="RM186 · 12 haribulan"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="kewangan"></article>
       </section>
 
       <section class="panel" id="ai">
@@ -140,11 +166,20 @@
           <img src="assets/img/modul-ai.jpg" alt="">
           <div><p class="eyebrow">Pembantu AI</p><h3>Pembantu rumah</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Stok beras menyusut lebih cepat minggu ini kerana cuti sekolah. Cadangan: 5kg, bukan 10kg.</span><b>Ramalan</b></div>
-          <div class="rowline"><span>Servis penghawa dingin Sabtu 10:00 bertindih dengan latihan. Alih teknisi ke 14:00?</span><b>Jadual</b></div>
-          <div class="rowline"><span>Cukai tanah tahun lepas dibayar 3 hari lewat. Peringatan tahun ini diangkat 14 hari lebih awal.</span><b>Cukai</b></div>
-        </article>
+        <form class="entry" data-book="ai">
+          <p class="entry-title">Tambah catatan untuk pembantu</p>
+          <label>Catatan<input name="title" required placeholder="Beras perlu ditambah sebelum Jumaat"></label>
+          <label>Jenis
+            <select name="detail" required>
+              <option>Nota</option>
+              <option>Ramalan</option>
+              <option>Jadual</option>
+              <option>Cukai</option>
+            </select>
+          </label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
+        <article class="card" data-list="ai"></article>
       </section>
 
       <section class="panel" id="galeri">
@@ -152,14 +187,14 @@
           <img src="assets/img/modul-galeri.jpg" alt="">
           <div><p class="eyebrow">Galeri</p><h3>Bingkai rumah</h3></div>
         </div>
-        <article class="card">
-          <div class="rowline"><span>Gambar dan video kekal pada pelayar ini. iPad yang dibiarkan menjadi bingkai.</span><b>Keluarga</b></div>
-          <div class="gallery-actions">
-            <button class="btn small" type="button" id="gallery-pick">Muat naik</button>
-            <button class="btn gold small" type="button" id="frame-now">Mainkan bingkai</button>
-            <input id="gallery-file" type="file" accept="image/*,video/*" multiple hidden>
-          </div>
-        </article>
+        <form class="entry" id="gallery-form">
+          <p class="entry-title">Tambah gambar atau video</p>
+          <label>Fail keluarga
+            <input id="gallery-file" type="file" accept="image/*,video/*" multiple>
+          </label>
+          <button class="btn small" type="button" id="gallery-pick">Muat naik</button>
+          <button class="btn gold small" type="button" id="frame-now">Mainkan bingkai</button>
+        </form>
         <p class="hint" id="gallery-note" hidden></p>
         <div class="gallery-grid" id="gallery-grid"></div>
         <p class="lede" id="gallery-empty">Belum ada gambar. Muat naik untuk mengisi bingkai rumah.</p>
@@ -170,11 +205,23 @@
           <img src="assets/img/modul-peranti.jpg" alt="">
           <div><p class="eyebrow">Peranti</p><h3>Pengurusan peranti</h3></div>
         </div>
+        <form class="entry" id="wifi-form">
+          <p class="entry-title">Kemaskini Wi-Fi rumah</p>
+          <label>Nama rangkaian<input name="ssid" required value="NadiRumah-5G"></label>
+          <label>Kelajuan<input name="speed" required value="186 Mbps"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
         <article class="card">
           <div class="rowline"><span id="wifi-name">NadiRumah-5G</span><b id="wifi-signal">Isyarat kuat</b></div>
           <div class="rowline"><span>Peranti di rangkaian</span><b id="wifi-count">—</b></div>
-          <div class="rowline"><span>Kelajuan semasa</span><b>186 Mbps</b></div>
+          <div class="rowline"><span>Kelajuan semasa</span><b id="wifi-speed">186 Mbps</b></div>
         </article>
+        <form class="entry" id="device-form">
+          <p class="entry-title">Tambah peranti</p>
+          <label>Nama<input name="name" required placeholder="Lampu anjung"></label>
+          <label>Bilik<input name="room" required placeholder="Anjung"></label>
+          <button class="btn small" type="submit">Simpan</button>
+        </form>
         <article class="card" id="device-list" aria-label="Suis peranti rumah"></article>
       </section>
     </main>
@@ -216,8 +263,10 @@
       </label>
     </div>
   </div>
+  <script src="assets/js/houses.js"></script>
   <script src="assets/js/dashboard.js"></script>
   <script src="assets/js/gallery.js"></script>
   <script src="assets/js/devices.js"></script>
+  <script src="assets/js/records.js"></script>
 </body>
 </html>

@@ -51,25 +51,28 @@
     modal.classList.add("open");
     modal.dataset.mode = mode;
     const admin = mode === "login";
-    title.textContent = admin ? "Log masuk pentadbir" : "Mulakan percubaan percuma";
+    title.textContent = admin ? "Log masuk pentadbir" : "Log masuk keluarga";
     note.textContent = admin
-      ? "Masukkan ID dan kata laluan pentadbir untuk membuka papan pemuka."
-      : "Tiada kad kredit. Akaun demo ini membawa anda terus ke papan pemuka.";
+      ? "Masukkan ID dan kata laluan pentadbir."
+      : "Setiap keluarga ada ID sendiri. Data rumah terbuka selepas log masuk.";
     modal.querySelectorAll("[data-admin]").forEach((el) => {
-      el.hidden = !admin;
+      el.hidden = false;
       const input = el.querySelector("input");
-      if (input) input.required = admin;
+      if (input) input.required = true;
     });
     modal.querySelectorAll("[data-family]").forEach((el) => {
-      el.hidden = admin;
+      el.hidden = true;
       const input = el.querySelector("input");
-      if (input) input.required = !admin;
+      if (input) {
+        input.required = false;
+        input.disabled = true;
+      }
     });
     if (error) {
       error.hidden = true;
       error.textContent = "";
     }
-    const first = modal.querySelector(admin ? "[data-admin] input" : "[data-family] input");
+    const first = modal.querySelector("[name='adminId']");
     if (first) first.focus();
   }
 
@@ -93,25 +96,25 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const data = new FormData(form);
-      if (modal.dataset.mode === "login") {
-        const id = String(data.get("adminId") || "").trim();
-        const pass = String(data.get("password") || "");
-        if (id !== ADMIN_ID || pass !== ADMIN_PASS) {
-          if (error) {
-            error.hidden = false;
-            error.textContent = "ID atau kata laluan tidak sepadan.";
-          }
-          return;
-        }
+      const id = String(data.get("adminId") || "").trim().toLowerCase();
+      const pass = String(data.get("password") || "");
+      const house = (window.NR_HOUSES || []).find((item) => item.id === id && item.password === pass);
+      if (id === ADMIN_ID && pass === ADMIN_PASS) {
         sessionStorage.setItem("nr_role", "admin");
         sessionStorage.setItem("nr_name", "Admin");
         sessionStorage.setItem("nr_email", "admin@nadirumah.my");
-      } else {
-        const name = String(data.get("name") || "Aminah").trim();
-        const email = String(data.get("email") || "").trim();
+        sessionStorage.setItem("nr_house", "aminah");
+      } else if (house) {
         sessionStorage.setItem("nr_role", "keluarga");
-        sessionStorage.setItem("nr_name", name);
-        sessionStorage.setItem("nr_email", email);
+        sessionStorage.setItem("nr_name", house.name);
+        sessionStorage.setItem("nr_email", house.id + "@nadirumah.my");
+        sessionStorage.setItem("nr_house", house.id);
+      } else {
+        if (error) {
+          error.hidden = false;
+          error.textContent = "ID atau kata laluan tidak sepadan.";
+        }
+        return;
       }
       window.location.href = "dashboard.html";
     });
