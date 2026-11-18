@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Papan pemuka · NadiRumah</title>
+  <meta name="description" content="Paparan antaramuka utama NadiRumah HomeOS untuk keluarga.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="dash">
+  <div class="app">
+    <aside class="side">
+      <a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span> NadiRumah</a>
+      <nav aria-label="Modul papan pemuka">
+        <button type="button" class="on" data-tab="ikhtisar">Ikhtisar</button>
+        <button type="button" data-tab="logistik">Logistik</button>
+        <button type="button" data-tab="selenggara">Penyelenggaraan</button>
+        <button type="button" data-tab="tugasan">Tugasan</button>
+        <button type="button" data-tab="dapur">Dapur</button>
+        <button type="button" data-tab="kesihatan">Kesihatan</button>
+        <button type="button" data-tab="kewangan">Kewangan</button>
+        <button type="button" data-tab="ai">Pembantu AI</button>
+        <button type="button" data-tab="galeri">Galeri</button>
+      </nav>
+    </aside>
+    <main class="main">
+      <canvas class="dash-dust" id="dust" aria-hidden="true"></canvas>
+      <div class="dash-orb" aria-hidden="true"></div>
+      <div class="topbar">
+        <div>
+          <p class="eyebrow" data-house>Rumah Aminah · Shah Alam</p>
+          <h2 class="dash-title">Selamat kembali, <span data-name>Aminah</span>.</h2>
+        </div>
+        <div class="top-actions">
+          <span class="live"><i class="pulse" aria-hidden="true"></i> Rumah bernafas</span>
+          <a class="btn gold small" href="index.html" data-logout>Log keluar</a>
+        </div>
+      </div>
+
+      <section class="panel on" id="ikhtisar">
+        <div class="kpis">
+          <div class="kpi"><b data-count="4">0</b><span>Ahli rumah aktif</span></div>
+          <div class="kpi"><b data-count="2">0</b><span>Bungkusan dalam perjalanan</span></div>
+          <div class="kpi"><b data-count="86" data-suffix="%">0%</b><span>Stok dapur minggu ini</span></div>
+          <div class="kpi"><b data-count="420" data-prefix="RM">RM0</b><span>Bil terbuka bulan ini</span></div>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Yang perlukan anda hari ini</h3>
+            <div class="rowline"><span>Sahkan tugasan lipat baju · Aisyah</span><b>+20</b></div>
+            <div class="rowline"><span>Bungkusan Shopee sampai petang</span><b>16:40</b></div>
+            <div class="rowline"><span>Susu di paras rendah</span><b>Dapur</b></div>
+          </article>
+          <article class="card card-ai">
+            <h3>Nadi AI</h3>
+            <p class="lede">Beras dijangka habis Jumaat. Tambah 5kg ke senarai belian sebelum hujung minggu?</p>
+            <button class="btn small" type="button" data-open-tab="ai">Buka cadangan</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="logistik">
+        <div class="dash-stage stage-tag">
+          <img src="assets/img/modul-logistik.jpg" alt="">
+          <div><p class="eyebrow">Logistik</p><h3>Penerimaan bungkusan</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Shopee · lampin &amp; sabun</span><b>Hari ini</b></div>
+          <div class="rowline"><span>Pos Laju · buku latihan Adam</span><b>Esok</b></div>
+          <div class="rowline"><span>Siapa ambil di pagar</span><b>Belum ditetapkan</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="selenggara">
+        <div class="dash-stage stage-arch">
+          <img src="assets/img/modul-penyelenggaraan.jpg" alt="">
+          <div><p class="eyebrow">Penyelenggaraan</p><h3>Meja bantuan rumah</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Penghawa dingin bilik tidur berbunyi</span><span class="tag">Terbuka</span></div>
+          <div class="rowline"><span>Lampu koridor kelip</span><b>Dijadualkan Sabtu</b></div>
+          <div class="rowline"><span>Paip singki dapur</span><b>Selesai</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="tugasan">
+        <div class="dash-stage stage-blob">
+          <img src="assets/img/modul-tugasan.jpg" alt="">
+          <div><p class="eyebrow">Tugasan</p><h3>Enjin tugasan</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Aisyah · lipat baju</span><b>20 mata · menunggu</b></div>
+          <div class="rowline"><span>Adam · siram tanaman</span><b>15 mata · selesai</b></div>
+          <div class="rowline"><span>Papan mata minggu ini</span><b>Aisyah 240 · Adam 180</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="dapur">
+        <div class="dash-stage stage-leaf">
+          <img src="assets/img/modul-dapur.jpg" alt="">
+          <div><p class="eyebrow">Dapur</p><h3>Arkib dapur</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Beras</span><b>2 hari</b></div>
+          <div class="rowline"><span>Susu segar</span><b>Hampir habis</b></div>
+          <div class="rowline"><span>Telur</span><b>Cukup</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="kesihatan">
+        <div class="dash-stage stage-window">
+          <img src="assets/img/modul-kesihatan.jpg" alt="">
+          <div><p class="eyebrow">Kesihatan</p><h3>Kesihatan &amp; sekolah</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Alahan Adam</span><b>Udang · epipen di laci dapur</b></div>
+          <div class="rowline"><span>Klinik keluarga</span><b>Klinik Kelana, 03-0000 2211</b></div>
+          <div class="rowline"><span>Latihan Aisyah</span><b>Khamis 17:30</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="kewangan">
+        <div class="dash-stage stage-fold">
+          <img src="assets/img/modul-kewangan.jpg" alt="">
+          <div><p class="eyebrow">Kewangan</p><h3>Kewangan rumah</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>TNB</span><b>RM186 · 12 haribulan</b></div>
+          <div class="rowline"><span>Air</span><b>RM42 · 18 haribulan</b></div>
+          <div class="rowline"><span>Cukai tanah</span><b>Mac · belum dijana</b></div>
+        </article>
+      </section>
+
+      <section class="panel" id="ai">
+        <article class="card card-ai">
+          <h3>Pembantu rumah</h3>
+          <div class="ai-line"><small>Ramalan</small><p>Stok beras menyusut lebih cepat minggu ini kerana cuti sekolah. Cadangan: 5kg, bukan 10kg.</p></div>
+          <div class="ai-line" style="margin-top:12px"><small>Jadual</small><p>Servis penghawa dingin Sabtu 10:00 bertindih dengan latihan. Alih teknisi ke 14:00?</p></div>
+          <div class="ai-line" style="margin-top:12px"><small>Cukai</small><p>Cukai tanah tahun lepas dibayar 3 hari lewat. Peringatan tahun ini diangkat 14 hari lebih awal.</p></div>
+        </article>
+      </section>
+
+      <section class="panel" id="galeri">
+        <div class="gallery-head">
+          <div>
+            <p class="eyebrow">Galeri keluarga</p>
+            <h3 class="dash-title">Bingkai rumah</h3>
+            <p class="lede">Admin dan ahli keluarga boleh muat naik gambar serta video. Apabila iPad dibiarkan, galeri menjadi bingkai.</p>
+          </div>
+          <div class="gallery-actions">
+            <button class="btn small" type="button" id="gallery-pick">Muat naik</button>
+            <button class="btn gold small" type="button" id="frame-now">Mainkan bingkai</button>
+            <input id="gallery-file" type="file" accept="image/*,video/*" multiple hidden>
+          </div>
+        </div>
+        <p class="hint" id="gallery-note" hidden></p>
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <p class="lede" id="gallery-empty">Belum ada gambar. Muat naik untuk mengisi bingkai rumah.</p>
+      </section>
+    </main>
+  </div>
+  <div class="weather" id="weather" role="status" aria-live="polite">
+    <span class="weather-sky" data-sky="cloud" aria-hidden="true"></span>
+    <span>
+      <strong id="weather-temp">—</strong>
+      <small id="weather-label">Shah Alam</small>
+    </span>
+  </div>
+  <div class="frame" id="frame" hidden role="dialog" aria-label="Bingkai gambar">
+    <div class="frame-stage" id="frame-stage"></div>
+    <div class="frame-meta">
+      <span id="frame-who"></span>
+      <span id="frame-clock"></span>
+    </div>
+    <p class="frame-hint">Sentuh untuk kembali</p>
+  </div>
+  <div class="soundpad">
+    <button class="sound-toggle" type="button" aria-expanded="false" aria-controls="sound-panel" aria-label="Lagu">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M9 18a3 3 0 1 1-2-2.83V6.5l10-2v9.67a3 3 0 1 1-2-2.83V7.2l-6 1.2V18Z"/></svg>
+    </button>
+    <div class="sound-panel" id="sound-panel" hidden>
+      <div class="sound-row">
+        <button class="sound-play" type="button" data-music="toggle">Main</button>
+        <span id="sound-now">Piano cerah</span>
+        <button class="sound-min" type="button" aria-label="Kecilkan">Kecilkan</button>
+      </div>
+      <div class="sound-list" role="listbox" aria-label="Senarai lagu">
+        <button type="button" data-weather-music aria-pressed="true">Ikut cuaca</button>
+        <button type="button" data-track="0" aria-pressed="false">Piano cerah</button>
+        <button type="button" data-track="1" aria-pressed="false">Piano mendung</button>
+        <button type="button" data-track="2" aria-pressed="false">Piano hujan</button>
+        <button type="button" data-track="3" aria-pressed="false">Dodoi malam</button>
+      </div>
+      <label class="sound-vol">Kelantangan
+        <input id="sound-vol" type="range" min="0" max="100" value="45" aria-valuemin="0" aria-valuemax="100">
+      </label>
+    </div>
+  </div>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/gallery.js"></script>
+</body>
+</html>

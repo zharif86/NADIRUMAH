@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NadiRumah (HomeOS) — Minda Tenang, Rumah Terurus</title>
+  <meta name="description" content="NadiRumah ialah sistem operasi rumah tangga Malaysia. Urus logistik keluarga, tugasan anak-anak, dapur, dan kewangan rumah dalam satu papan pemuka.">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#utama">Langkau ke kandungan</a>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#utama"><span class="mark" aria-hidden="true"></span> NadiRumah</a>
+      <nav class="nav-links" aria-label="Utama">
+        <a href="#utama">Utama</a>
+        <a href="#modul">Modul Sistem</a>
+        <a href="#kelebihan">Kelebihan</a>
+        <a href="#harga">Harga &amp; Pelan</a>
+        <a href="#faq">Soalan Lazim</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="link-quiet" type="button" data-open="login">Log Masuk</button>
+        <button class="btn small" type="button" data-open="signup">Cuba Percuma</button>
+        <button class="burger" type="button" aria-label="Buka menu" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <div class="menu" id="mobile-menu">
+    <a href="#utama">Utama</a>
+    <a href="#modul">Modul Sistem</a>
+    <a href="#kelebihan">Kelebihan</a>
+    <a href="#harga">Harga &amp; Pelan</a>
+    <a href="#faq">Soalan Lazim</a>
+    <button class="btn" type="button" data-open="signup">Cuba Percuma</button>
+  </div>
+
+  <main id="utama">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow reveal">HomeOS · Malaysia</p>
+          <h1 class="reveal d2">Mengurus rumah.<br><span>Mencetus ketenangan.</span></h1>
+          <p class="lede reveal d3">Sistem operasi pertama Malaysia yang menghapuskan beban mental ibu bapa. Urus logistik keluarga, gamifikasi tugasan anak-anak, dan jejaki kewangan rumah dalam satu papan pemuka pintar.</p>
+          <div class="hero-actions reveal d3">
+            <button class="btn" type="button" data-open="signup">Mulakan Percubaan Percuma</button>
+            <a class="btn gold" href="dashboard.html">Tonton Demo NadiRumah</a>
+          </div>
+          <div class="meta-row">
+            <div><strong>SaaS / PWA</strong>Akses awan, sedia untuk tablet dinding</div>
+            <div><strong>Keluarga</strong>Ibu bapa, anak-anak, isi rumah pelbagai generasi</div>
+          </div>
+        </div>
+        <div class="stage" aria-hidden="true">
+          <canvas id="dust"></canvas>
+          <div class="glow-orb"></div>
+          <div class="float-label a">Bungkusan tiba · 16:40</div>
+          <div class="float-label b">Tugasan Adam · +15 mata</div>
+          <div class="float-label c">Bil TNB diingatkan</div>
+          <div class="tablet">
+            <div class="tablet-screen">
+              <div class="screen-top"><span>Keluarga Aminah</span><span class="pulse"></span></div>
+              <div class="screen-title">Hari ini tenang.</div>
+              <div class="chip-row">
+                <span class="chip">4 ahli</span>
+                <span class="chip">2 bungkusan</span>
+                <span class="chip">Dapur 86%</span>
+              </div>
+              <div class="mini-card">
+                <b>Lipat baju · Aisyah</b>
+                <span>20 mata · belum disahkan</span>
+                <div class="bar"><i></i></div>
+              </div>
+              <div class="mini-card">
+                <b>Beras tinggal 2 hari</b>
+                <span>Cadangan AI: tambah ke senarai belian</span>
+              </div>
+              <div class="mini-card">
+                <b>Cukai tanah · Mac</b>
+                <span>Liabiliti kelihatan, tiada denda senyap</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="tentang">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Tentang sistem</p>
+          <h2>Mengembalikan masa anda. Menyatukan keluarga.</h2>
+          <p class="lede">Beban mental rumahtangga jarang kelihatan pada kalendar, tetapi ia sentiasa duduk pada seorang sahaja. NadiRumah mengangkat ingatan itu daripada kepala seseorang, lalu meletakkannya pada satu sistem yang seluruh rumah boleh sentuh.</p>
+          <p class="quote">Bukan aplikasi kalendar. Ia nadi yang memegang rumah supaya anda tidak perlu.</p>
+          <ul class="points">
+            <li>Menghapuskan kebergantungan maklumat pada satu individu.</li>
+            <li>Menggalakkan pembahagian kerja rumah yang adil.</li>
+            <li>Mengelakkan pembaziran inventori dapur.</li>
+            <li>Mencegah kerosakan utiliti dan denda lewat bayar.</li>
+            <li>Membina tabiat positif anak-anak melalui gamifikasi.</li>
+          </ul>
+        </div>
+        <div class="family-visual" role="img" aria-label="Ilustrasi keluarga berdiri di hadapan skrin dinding rumah">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="person p1"></div>
+          <div class="person p2"></div>
+          <div class="person p3"></div>
+          <div class="wall"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modul">
+      <div class="wrap">
+        <div class="module-head">
+          <div>
+            <p class="eyebrow">Modul sistem</p>
+            <h2>Modul bersepadu NadiRumah</h2>
+          </div>
+          <p class="lede">Enam ruang yang biasanya berserak dalam chat keluarga, nota telefon, dan kepala ibu — kini satu papan.</p>
+        </div>
+        <div class="modules">
+          <article class="module m-tag">
+            <figure class="module-art">
+              <img src="assets/img/modul-logistik.jpg" alt="Bungkusan kertas diikat tali di atas kain linen">
+            </figure>
+            <div class="module-body">
+              <div class="idx">01</div>
+              <h3>Logistik &amp; bungkusan</h3>
+              <p>Jejak parcel masuk, siapa yang ambil, dan apa yang belum dibuka. Tiada lagi “barang tu sampai ke?”</p>
+            </div>
+          </article>
+          <article class="module m-arch">
+            <figure class="module-art">
+              <img src="assets/img/modul-penyelenggaraan.jpg" alt="Mentol, pemutar skru, dan pokok herba di atas meja">
+            </figure>
+            <div class="module-body">
+              <div class="idx">02</div>
+              <h3>Meja bantuan &amp; penyelenggaraan</h3>
+              <p>Aduan paip, lampu, dan baiki penghawa dingin jadi tiket, bukan mesej yang tenggelam.</p>
+            </div>
+          </article>
+          <article class="module m-blob">
+            <figure class="module-art">
+              <img src="assets/img/modul-tugasan.jpg" alt="Bintang kayu, pelekat bintang, dan baju dilipat">
+            </figure>
+            <div class="module-body">
+              <div class="idx">03</div>
+              <h3>Gamifikasi tugasan</h3>
+              <p>Kerja rumah anak-anak jadi mata, ganjaran, dan tabiat. Adil untuk semua, kelihatan untuk ibu bapa.</p>
+            </div>
+          </article>
+          <article class="module m-leaf">
+            <figure class="module-art">
+              <img src="assets/img/modul-dapur.jpg" alt="Balang beras, herba kering, dan sudu kayu di dapur">
+            </figure>
+            <div class="module-body">
+              <div class="idx">04</div>
+              <h3>Inventori &amp; dapur pintar</h3>
+              <p>Arkib stok dapur. Sistem nampak apa yang hampir habis sebelum ia benar-benar habis.</p>
+            </div>
+          </article>
+          <article class="module m-window">
+            <figure class="module-art">
+              <img src="assets/img/modul-kesihatan.jpg" alt="Beg pertolongan cemas linen, kalendar, dan pensel">
+            </figure>
+            <div class="module-body">
+              <div class="idx">05</div>
+              <h3>Kesihatan &amp; pendidikan</h3>
+              <p>Rekod perubatan kecemasan dan jadual sekolah duduk di hujung jari, bukan dalam laci.</p>
+            </div>
+          </article>
+          <article class="module m-fold">
+            <figure class="module-art">
+              <img src="assets/img/modul-kewangan.jpg" alt="Kunci rumah tembaga, sampul surat, dan syiling dalam mangkuk seramik">
+            </figure>
+            <div class="module-body">
+              <div class="idx">06</div>
+              <h3>Kewangan, cukai &amp; hartanah</h3>
+              <p>Utiliti, cukai tanah, dan liabiliti rumah dalam satu garis masa. Jumlah kos rumah jadi telus.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="kelebihan">
+      <div class="wrap">
+        <p class="eyebrow">Kelebihan</p>
+        <h2>Mengapa keluarga moden memilih NadiRumah?</h2>
+        <div class="why-list">
+          <div class="why-item"><span>01</span><div><strong>Sifar miskomunikasi rumahtangga.</strong><p class="lede">Satu sumber benar. Semua orang nampak status yang sama, pada masa yang sama.</p></div></div>
+          <div class="why-item"><span>02</span><div><strong>Rekod kecemasan di hujung jari.</strong><p class="lede">Alahan, klinik, dan hubungan waris tidak lagi bergantung pada ingatan seorang.</p></div></div>
+          <div class="why-item"><span>03</span><div><strong>Disiplin anak melalui ganjaran.</strong><p class="lede">Tugasan selesai kelihatan. Mata terkumpul. Tabiat dibina tanpa ceramah setiap malam.</p></div></div>
+          <div class="why-item"><span>04</span><div><strong>Kos rumah yang telus.</strong><p class="lede">Jumlah pemilikan rumah — bil, senggaraan, cukai — berhenti menjadi kejutan.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="langkah">
+      <div class="wrap">
+        <p class="eyebrow">Onboarding</p>
+        <h2>Langkah mudah menuju ketenangan</h2>
+        <div class="steps">
+          <article class="step"><em>01</em><h3>Daftar akaun induk</h3><p>Seorang dewasa membuka rumah digital dan memegang kunci keluarga.</p></article>
+          <article class="step"><em>02</em><h3>Cipta profil ahli</h3><p>Pasangan dan anak-anak dapat ruang sendiri, dengan kebenaran yang sesuai umur.</p></article>
+          <article class="step"><em>03</em><h3>Log masuk di dinding</h3><p>Tablet atau iPad di dapur menjadi papan yang seluruh rumah laluinya.</p></article>
+          <article class="step"><em>04</em><h3>Rumah mula bernafas</h3><p>Parcel, tugasan, dapur, dan bil bergerak tanpa anda menjadi satu-satunya ingatan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="ai">
+      <div class="wrap">
+        <div class="ai-panel">
+          <div>
+            <p class="eyebrow">Automasi</p>
+            <h2>Dikuasakan oleh enjin pembantu AI</h2>
+            <p class="lede">Bukan chatbot yang mengarah rumah anda. Ia pemerhati yang senyap: nampak corak, cadang langkah, dan ingat tarikh yang manusia selalu tertinggal.</p>
+          </div>
+          <div class="ai-log">
+            <article class="ai-line"><small>Dapur</small><p>Analisis ramalan: beras dan susu dijangka habis sebelum hujung minggu. Senarai belian sudah disusun.</p></article>
+            <article class="ai-line"><small>Jadual</small><p>Cadangan penyelarasan: latihan Aisyah bertindih dengan servis penghawa dingin. Alih slot atau tukar tarikh teknisi?</p></article>
+            <article class="ai-line"><small>Cukai &amp; utiliti</small><p>Peringatan tempatan: bil TNB dan cukai tanah masuk kalendar sebelum tarikh akhir, bukan selepas notis denda.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="harga">
+      <div class="wrap">
+        <p class="eyebrow">Harga &amp; pelan</p>
+        <h2>Telus dari hari pertama</h2>
+        <p class="lede">Mula dengan asas keluarga. Naik taraf apabila rumah perlukan awan masa nyata dan sandaran tanpa had.</p>
+        <div class="billing" role="group" aria-label="Kitaran bil">
+          <button type="button" data-bill="month" class="on">Bulanan</button>
+          <button type="button" data-bill="year">Tahunan</button>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <p class="eyebrow">Asas keluarga</p>
+            <div class="price">RM0 <small>/ selamanya</small></div>
+            <ul>
+              <li>1 rumah, sehingga 4 profil</li>
+              <li>Tugasan, kalendar, dan logistik asas</li>
+              <li>Sandaran tempatan pada peranti</li>
+              <li>Papan pemuka untuk tablet</li>
+            </ul>
+            <button class="btn gold" type="button" data-open="signup">Mulakan percuma</button>
+          </article>
+          <article class="plan featured">
+            <p class="eyebrow">Premium</p>
+            <div class="price">RM<span data-price data-month="39" data-year="390">39</span> <small data-price data-month="/ bulan" data-year="/ tahun">/ bulan</small></div>
+            <p class="save" hidden>Jimatan dua bulan pada bil tahunan.</p>
+            <ul>
+              <li>Awan masa nyata untuk seluruh keluarga</li>
+              <li>Sandaran tanpa had</li>
+              <li>Pembantu AI dapur, jadual, dan cukai</li>
+              <li>Profil tanpa had dan sokongan keutamaan</li>
+            </ul>
+            <button class="btn" type="button" data-open="signup">Pilih Premium</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="ulasan">
+      <div class="wrap">
+        <p class="eyebrow">Pengguna terawal</p>
+        <h2>Rumah yang sudah bernafas lebih perlahan</h2>
+        <div class="stories">
+          <article class="story feature">
+            <q>Dulu semua ingatan duduk pada saya. Sekarang anak tanya papan, bukan tanya emak. Malam jadi lebih sunyi — dalam cara yang baik.</q>
+            <div class="who"><span class="avatar">AR</span><div><b>Aminah Rahman</b><br>Ketua keluarga · Shah Alam</div></div>
+          </article>
+          <div class="stack">
+            <article class="story">
+              <h3>“Bil tak lagi datang sebagai kejutan.”</h3>
+              <p class="lede">Cukai tanah dan TNB duduk pada garis masa yang sama dengan jadual sekolah.</p>
+              <div class="who"><span class="avatar">HL</span><div><b>Hafiz Lim</b><br>Ketua keluarga · Penang</div></div>
+            </article>
+            <article class="story">
+              <h3>“Anak kejar mata, bukan saya yang kejar mereka.”</h3>
+              <p class="lede">Gamifikasi tugasan menukar peringatan malam menjadi permainan yang mereka sendiri mahu menang.</p>
+              <div class="who"><span class="avatar">SN</span><div><b>Sara Nadia</b><br>Ketua keluarga · Johor Bahru</div></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <p class="eyebrow">Soalan lazim</p>
+        <h2>Sebelum anda menyerahkan rumah kepada sistem</h2>
+        <div class="faq">
+          <details>
+            <summary>Adakah data keluarga saya selamat?</summary>
+            <p>Rekod kesihatan, kewangan, dan profil kanak-kanak disimpan berasingan daripada kandungan pemasaran. Akses ahli dikawal oleh akaun induk. Pelan Premium menambah sandaran sulit di awan. Kami tidak menjual data keluarga.</p>
+          </details>
+          <details>
+            <summary>Boleh digunakan di iPad lama?</summary>
+            <p>Ya. NadiRumah dibina sebagai PWA. iPad dan tablet Android yang masih membuka pelayar moden boleh menjadi skrin dinding — tanpa aplikasi kedai yang berat.</p>
+          </details>
+          <details>
+            <summary>Adakah perlu peranti IoT?</summary>
+            <p>Tidak. Rumah tidak perlu suis pintar atau sensor untuk mula. Modul logistik, tugasan, dapur, dan bil berfungsi dengan input keluarga. Peranti IoT boleh datang kemudian, bukan sebagai syarat.</p>
+          </details>
+          <details>
+            <summary>Berapa ahli yang boleh didaftarkan?</summary>
+            <p>Pelan percuma memuatkan empat profil. Pelan Premium membuka profil tanpa had — sesuai untuk rumah pelbagai generasi dan penjaga yang datang pergi.</p>
+          </details>
+          <details>
+            <summary>Boleh berhenti bila-bila masa?</summary>
+            <p>Boleh. Naik taraf dan turun taraf tidak mengunci data asas keluarga anda. Eksport rekod kekal milik rumah, bukan milik langganan.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mula">
+      <div class="wrap">
+        <div class="final">
+          <p class="eyebrow" style="justify-content:center">Mula hari ini</p>
+          <h2>Rumah anda. Lebih terurus.</h2>
+          <p class="lede">Jangan biarkan urusan rumahtangga menjejaskan masa berkualiti keluarga anda. Jadikan NadiRumah sebagai nadi penggerak kediaman anda bermula hari ini.</p>
+          <button class="btn" type="button" data-open="signup">Daftar Akaun Percuma Sekarang</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="logo" href="#utama"><span class="mark" aria-hidden="true"></span> NadiRumah</a>
+        <p>Minda tenang, rumah terurus. HomeOS untuk keluarga Malaysia.</p>
+        <p>Emel sokongan<br><a href="mailto:sokongan@nadirumah.my">sokongan@nadirumah.my</a></p>
+      </div>
+      <div>
+        <h3>Produk</h3>
+        <a href="#modul">Modul</a>
+        <a href="#harga">Harga</a>
+        <a href="dashboard.html">Demo papan pemuka</a>
+      </div>
+      <div>
+        <h3>Rumah</h3>
+        <a href="privasi.html">Dasar Privasi</a>
+        <a href="terma.html">Terma Penggunaan</a>
+        <a href="#faq">Soalan Lazim</a>
+      </div>
+      <div>
+        <h3>Sosial</h3>
+        <a href="https://instagram.com" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="wrap legal">© 2026 NadiRumah. Hak cipta terpelihara. Dibangunkan oleh Tripletlab.</div>
+  </footer>
+
+  <div class="modal-back" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <form class="modal" id="gate-form">
+      <h3 id="gate-title">Mulakan percubaan percuma</h3>
+      <p class="hint" id="gate-note">Tiada kad kredit. Akaun demo ini membawa anda terus ke papan pemuka.</p>
+      <label class="field" data-family>Nama ketua keluarga
+        <input name="name" type="text" value="Aminah" required autocomplete="name">
+      </label>
+      <label class="field" data-family>E-mel
+        <input name="email" type="email" placeholder="anda@keluarga.my" required autocomplete="email">
+      </label>
+      <label class="field" data-admin hidden>ID admin
+        <input name="adminId" type="text" autocomplete="username" autocapitalize="none" spellcheck="false">
+      </label>
+      <label class="field" data-admin hidden>Kata laluan
+        <input name="password" type="password" autocomplete="current-password">
+      </label>
+      <p class="hint gate-error" id="gate-error" hidden></p>
+      <button class="btn" type="submit">Masuk ke papan pemuka</button>
+      <button class="link-quiet" type="button" data-close>Tutup</button>
+    </form>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
