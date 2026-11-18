@@ -24,6 +24,7 @@
         <button type="button" data-tab="kewangan">Kewangan</button>
         <button type="button" data-tab="ai">Pembantu AI</button>
         <button type="button" data-tab="galeri">Galeri</button>
+        <button type="button" data-tab="peranti">Peranti</button>
       </nav>
     </aside>
     <main class="main">
@@ -163,6 +164,19 @@
         <div class="gallery-grid" id="gallery-grid"></div>
         <p class="lede" id="gallery-empty">Belum ada gambar. Muat naik untuk mengisi bingkai rumah.</p>
       </section>
+
+      <section class="panel" id="peranti">
+        <div class="dash-stage stage-device">
+          <img src="assets/img/modul-peranti.jpg" alt="">
+          <div><p class="eyebrow">Peranti</p><h3>Pengurusan peranti</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span id="wifi-name">NadiRumah-5G</span><b id="wifi-signal">Isyarat kuat</b></div>
+          <div class="rowline"><span>Peranti di rangkaian</span><b id="wifi-count">—</b></div>
+          <div class="rowline"><span>Kelajuan semasa</span><b>186 Mbps</b></div>
+        </article>
+        <article class="card" id="device-list" aria-label="Suis peranti rumah"></article>
+      </section>
     </main>
   </div>
   <div class="weather" id="weather" role="status" aria-live="polite">
@@ -204,5 +218,6 @@
   </div>
   <script src="assets/js/dashboard.js"></script>
   <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/devices.js"></script>
 </body>
 </html>
