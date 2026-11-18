@@ -5,11 +5,16 @@
   const houses = window.NR_HOUSES || [];
   const house = houses.find((item) => item.id === sessionStorage.getItem("nr_house")) || houses[0];
   const houseId = house ? house.id : "aminah";
+  function isAircon(device) {
+    return /penghawa|aircond|air cond|air-cond/i.test(device.name);
+  }
+
   const builtins = (house && house.devices ? house.devices : []).map((device) => ({
     id: device.id,
     name: device.name,
     room: device.room,
     on: !!device.on,
+    temp: isAircon(device) ? 24 : null,
     custom: false
   }));
 
@@ -23,17 +28,30 @@
     extras = [];
   }
   if (!Array.isArray(extras)) extras = [];
-  builtins.forEach((device) => {
-    if (typeof saved[device.id] === "boolean") device.on = saved[device.id];
-  });
+  function applySaved(device, value) {
+    if (typeof value === "boolean") {
+      device.on = value;
+      return;
+    }
+    if (!value || typeof value !== "object") return;
+    if (typeof value.on === "boolean") device.on = value.on;
+    if (Number.isFinite(value.temp)) device.temp = value.temp;
+  }
 
-  const catalog = builtins.concat(extras.map((device) => ({
-    id: device.id,
-    name: device.name,
-    room: device.room,
-    on: !!device.on,
-    custom: true
-  })));
+  builtins.forEach((device) => applySaved(device, saved[device.id]));
+
+  const catalog = builtins.concat(extras.map((device) => {
+    const item = {
+      id: device.id,
+      name: device.name,
+      room: device.room,
+      on: !!device.on,
+      temp: isAircon(device) ? 24 : null,
+      custom: true
+    };
+    applySaved(item, device);
+    return item;
+  }));
 
   const countEl = document.querySelector("#wifi-count");
   const nameEl = document.querySelector("#wifi-name");
@@ -42,7 +60,7 @@
   function persist() {
     const state = {};
     catalog.forEach((device) => {
-      state[device.id] = device.on;
+      state[device.id] = device.temp == null ? device.on : { on: device.on, temp: device.temp };
     });
     localStorage.setItem("nr_devices_" + houseId, JSON.stringify(state));
     localStorage.setItem("nr_device_extra_" + houseId, JSON.stringify(catalog.filter((device) => device.custom)));
@@ -78,10 +96,40 @@
       button.addEventListener("click", () => {
         device.on = !device.on;
         button.setAttribute("aria-pressed", device.on ? "true" : "false");
+        row.classList.toggle("is-off", !device.on);
         persist();
         refreshCount();
       });
+      if (device.temp != null) {
+        const temp = document.createElement("div");
+        temp.className = "temp";
+        const down = document.createElement("button");
+        down.type = "button";
+        down.textContent = "−";
+        down.setAttribute("aria-label", "Turunkan suhu " + device.room);
+        const read = document.createElement("b");
+        const up = document.createElement("button");
+        up.type = "button";
+        up.textContent = "+";
+        up.setAttribute("aria-label", "Naikkan suhu " + device.room);
+        function showTemp() {
+          read.textContent = device.temp + "°";
+          down.disabled = device.temp <= 16;
+          up.disabled = device.temp >= 30;
+        }
+        function setTemp(next) {
+          device.temp = Math.min(30, Math.max(16, next));
+          showTemp();
+          persist();
+        }
+        down.addEventListener("click", () => setTemp(device.temp - 1));
+        up.addEventListener("click", () => setTemp(device.temp + 1));
+        showTemp();
+        temp.append(down, read, up);
+        actions.append(temp);
+      }
       actions.append(button);
+      row.classList.toggle("is-off", !device.on);
       if (device.custom) {
         const remove = document.createElement("button");
         remove.type = "button";
@@ -138,6 +186,7 @@
         name: name,
         room: room,
         on: false,
+        temp: /penghawa|aircond|air cond|air-cond/i.test(name) ? 24 : null,
         custom: true
       });
       deviceForm.reset();
