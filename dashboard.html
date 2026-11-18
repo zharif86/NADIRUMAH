@@ -196,6 +196,12 @@
           </label>
           <button class="btn small" type="button" id="gallery-pick">Muat naik</button>
           <button class="btn gold small" type="button" id="frame-now">Mainkan bingkai</button>
+          <div class="saver">
+            <span>Screen saver</span>
+            <button class="switch" type="button" id="frame-arm" aria-pressed="false" aria-label="Screen saver">
+              <i aria-hidden="true"></i>
+            </button>
+          </div>
         </form>
         <p class="hint" id="gallery-note" hidden></p>
         <div class="gallery-grid" id="gallery-grid"></div>
@@ -250,6 +256,9 @@
     <div class="sound-panel" id="sound-panel" hidden>
       <div class="sound-row">
         <button class="sound-play" type="button" data-music="toggle">Main</button>
+        <button class="sound-stop" type="button" data-music="stop" aria-label="Henti">
+          <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor"/></svg>
+        </button>
         <span id="sound-now">Piano cerah</span>
         <button class="sound-min" type="button" aria-label="Kecilkan">Kecilkan</button>
       </div>
