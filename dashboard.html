@@ -135,27 +135,30 @@
       </section>
 
       <section class="panel" id="ai">
-        <article class="card card-ai">
-          <h3>Pembantu rumah</h3>
-          <div class="ai-line"><small>Ramalan</small><p>Stok beras menyusut lebih cepat minggu ini kerana cuti sekolah. Cadangan: 5kg, bukan 10kg.</p></div>
-          <div class="ai-line" style="margin-top:12px"><small>Jadual</small><p>Servis penghawa dingin Sabtu 10:00 bertindih dengan latihan. Alih teknisi ke 14:00?</p></div>
-          <div class="ai-line" style="margin-top:12px"><small>Cukai</small><p>Cukai tanah tahun lepas dibayar 3 hari lewat. Peringatan tahun ini diangkat 14 hari lebih awal.</p></div>
+        <div class="dash-stage stage-soft">
+          <img src="assets/img/modul-ai.jpg" alt="">
+          <div><p class="eyebrow">Pembantu AI</p><h3>Pembantu rumah</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Stok beras menyusut lebih cepat minggu ini kerana cuti sekolah. Cadangan: 5kg, bukan 10kg.</span><b>Ramalan</b></div>
+          <div class="rowline"><span>Servis penghawa dingin Sabtu 10:00 bertindih dengan latihan. Alih teknisi ke 14:00?</span><b>Jadual</b></div>
+          <div class="rowline"><span>Cukai tanah tahun lepas dibayar 3 hari lewat. Peringatan tahun ini diangkat 14 hari lebih awal.</span><b>Cukai</b></div>
         </article>
       </section>
 
       <section class="panel" id="galeri">
-        <div class="gallery-head">
-          <div>
-            <p class="eyebrow">Galeri keluarga</p>
-            <h3 class="dash-title">Bingkai rumah</h3>
-            <p class="lede">Admin dan ahli keluarga boleh muat naik gambar serta video. Apabila iPad dibiarkan, galeri menjadi bingkai.</p>
-          </div>
+        <div class="dash-stage stage-frame">
+          <img src="assets/img/modul-galeri.jpg" alt="">
+          <div><p class="eyebrow">Galeri</p><h3>Bingkai rumah</h3></div>
+        </div>
+        <article class="card">
+          <div class="rowline"><span>Gambar dan video kekal pada pelayar ini. iPad yang dibiarkan menjadi bingkai.</span><b>Keluarga</b></div>
           <div class="gallery-actions">
             <button class="btn small" type="button" id="gallery-pick">Muat naik</button>
             <button class="btn gold small" type="button" id="frame-now">Mainkan bingkai</button>
             <input id="gallery-file" type="file" accept="image/*,video/*" multiple hidden>
           </div>
-        </div>
+        </article>
         <p class="hint" id="gallery-note" hidden></p>
         <div class="gallery-grid" id="gallery-grid"></div>
         <p class="lede" id="gallery-empty">Belum ada gambar. Muat naik untuk mengisi bingkai rumah.</p>

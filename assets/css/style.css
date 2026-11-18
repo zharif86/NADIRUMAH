@@ -789,6 +789,9 @@ body.dash {
 .stage-leaf { border-radius: 28px 90px 28px 90px; }
 .stage-window { border-radius: 140px 140px 26px 26px; }
 .stage-fold { border-radius: 8px 64px 22px 28px; }
+.stage-soft { border-radius: 36px 80px 28px 64px; }
+.stage-frame { border-radius: 22px; }
+.gallery-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
@@ -897,18 +900,10 @@ body.dash {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--gold); right: 7px; top: 8px;
 }
-.gallery-head, .gallery-actions { position: relative; z-index: 1; }
-.gallery-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: end;
-  margin: 8px 0 18px;
-}
-.gallery-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .gallery-grid {
   position: relative;
   z-index: 1;
+  margin-top: 14px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 14px;
@@ -974,7 +969,6 @@ body.dash {
   opacity: 0.75;
 }
 @media (max-width: 640px) {
-  .gallery-head { display: block; }
   .weather { left: 12px; bottom: 12px; }
 }
 
