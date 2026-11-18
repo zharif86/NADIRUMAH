@@ -415,6 +415,7 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
 .m-fold { border-radius: 8px 64px 22px 28px; }
 .m-soft { border-radius: 36px 80px 28px 64px; }
 .m-frame { border-radius: 22px; margin-top: 32px; }
+.m-device { border-radius: 48px 18px 64px 18px; }
 .m-fold::after {
   content: "";
   position: absolute;
@@ -793,7 +794,42 @@ body.dash {
 .stage-fold { border-radius: 8px 64px 22px 28px; }
 .stage-soft { border-radius: 36px 80px 28px 64px; }
 .stage-frame { border-radius: 22px; }
+.stage-device { border-radius: 48px 18px 64px 18px; }
 .gallery-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 14px; }
+#device-list { margin-top: 14px; }
+.device-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.device-row:first-child { border-top: 0; padding-top: 0; }
+.device-row b { display: block; font-weight: 600; }
+.device-row span { color: var(--grey); font-size: 0.85rem; }
+.switch {
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #e7e2d8;
+  position: relative;
+  flex: none;
+  padding: 0;
+}
+.switch[aria-pressed="true"] { background: var(--blue); border-color: transparent; }
+.switch i {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--paper);
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s ease;
+}
+.switch[aria-pressed="true"] i { transform: translateX(20px); }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
