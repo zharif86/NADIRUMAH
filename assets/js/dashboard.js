@@ -286,6 +286,22 @@
     if (toggle) toggle.classList.remove("is-on");
   }
 
+  function stopMusic() {
+    playing = false;
+    paused = true;
+    step = 0;
+    nextTime = 0;
+    if (clock) {
+      window.clearInterval(clock);
+      clock = 0;
+    }
+    if (playBtn) playBtn.textContent = "Main";
+    if (toggle) toggle.classList.remove("is-on");
+    if (ctx && musicGain) {
+      musicGain.gain.setTargetAtTime(0.0001, ctx.currentTime, 0.03);
+    }
+  }
+
   function setPanel(open) {
     if (!panel || !toggle) return;
     panel.hidden = !open;
@@ -304,6 +320,8 @@
       else startMusic();
     });
   }
+  const stopBtn = document.querySelector("[data-music='stop']");
+  if (stopBtn) stopBtn.addEventListener("click", stopMusic);
   trackButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       followWeather = false;

@@ -18,6 +18,9 @@
   let idleTimer = 0;
   let framing = false;
   const idleMs = 60000;
+  const arm = document.querySelector("#frame-arm");
+  const armKey = "nr_screensaver_" + (sessionStorage.getItem("nr_house") || "aminah");
+  let armed = localStorage.getItem(armKey) === "1";
 
   function owner() {
     const name = sessionStorage.getItem("nr_name") || "Keluarga";
@@ -177,9 +180,14 @@
     bump();
   }
 
+  function paintArm() {
+    if (!arm) return;
+    arm.setAttribute("aria-pressed", armed ? "true" : "false");
+  }
+
   function bump() {
     window.clearTimeout(idleTimer);
-    if (framing || !items.length) return;
+    if (!armed || framing || !items.length) return;
     idleTimer = window.setTimeout(openFrame, idleMs);
   }
 
@@ -202,6 +210,21 @@
         if (items.length) say("");
         bump();
       }).catch(() => say("Galeri tidak dapat menyimpan fail ini pada pelayar."));
+    });
+  }
+  paintArm();
+  if (arm) {
+    arm.addEventListener("click", () => {
+      if (!armed && !items.length) {
+        say("Muat naik sekurang-kurangnya satu gambar atau video dahulu.");
+        return;
+      }
+      armed = !armed;
+      localStorage.setItem(armKey, armed ? "1" : "0");
+      paintArm();
+      say(armed ? "Screen saver hidup. Bingkai bermula selepas skrin dibiarkan seminit." : "");
+      if (!armed && framing) closeFrame();
+      else bump();
     });
   }
   if (frameBtn) frameBtn.addEventListener("click", openFrame);
