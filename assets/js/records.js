@@ -145,10 +145,10 @@
     { name: "Bubur ayam", needs: ["beras", "ayam"], video: "RWdVv4pc91E" },
     { name: "Bubur nasi", needs: ["beras"], video: "aXT66cGGrbI" },
     { name: "Telur dadar", needs: ["telur"], video: "bSjOsbVxcCs", by: "Mendadak Masak" },
-    { name: "Sayur tumis telur", needs: ["sayur", "telur"], search: "resepi sayur tumis telur" },
-    { name: "Ikan goreng", needs: ["ikan"], search: "resepi ikan goreng rangup" },
-    { name: "Mee goreng", needs: ["mi", "telur"], search: "resepi mee goreng telur" },
-    { name: "Roti telur", needs: ["roti", "telur"], search: "resepi roti telur malaysia" }
+    { name: "Sayur tumis telur", needs: ["sayur", "telur"], video: "nGL8mfJKu6g", by: "Dapur Sederhana Tika" },
+    { name: "Ikan goreng", needs: ["ikan"], video: "Ir3GKUpQHx8", by: "Mio Shahril" },
+    { name: "Mee goreng", needs: ["mi", "telur"], video: "ceWktPq-HHU", by: "Malina Lina Pg" },
+    { name: "Roti telur", needs: ["roti", "telur"], video: "SCeow8MsgYk", by: "Cili.my" }
   ];
 
   const pantryWords = {
@@ -163,7 +163,7 @@
 
   function pantryKey(title) {
     const text = String(title).toLowerCase();
-    const found = Object.keys(pantryWords).find((key) => pantryWords[key].some((word) => text.includes(word)));
+    const found = Object.keys(pantryWords).find((key) => pantryWords[key].some((word) => new RegExp("(^|[^a-z])" + word + "([^a-z]|$)", "i").test(text)));
     return found || "";
   }
 
@@ -210,15 +210,11 @@
       link.className = "recipe";
       link.target = "_blank";
       link.rel = "noopener";
-      link.href = item.recipe.video
-        ? "https://www.youtube.com/watch?v=" + item.recipe.video
-        : "https://www.youtube.com/results?search_query=" + encodeURIComponent(item.recipe.search);
-      if (item.recipe.video) {
-        const img = document.createElement("img");
-        img.src = "https://i.ytimg.com/vi/" + item.recipe.video + "/mqdefault.jpg";
-        img.alt = "";
-        link.append(img);
-      }
+      link.href = "https://www.youtube.com/watch?v=" + item.recipe.video;
+      const img = document.createElement("img");
+      img.src = "https://i.ytimg.com/vi/" + item.recipe.video + "/mqdefault.jpg";
+      img.alt = "";
+      link.append(img);
       const copy = document.createElement("div");
       const name = document.createElement("b");
       name.textContent = item.recipe.name;
